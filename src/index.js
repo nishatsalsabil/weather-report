@@ -1,21 +1,12 @@
 'use strict';
 
-// Write functionality to increase temp by 1 on click
-// Write functionality to decrease temp by 1 on click
-
-// We leave this here as a reminder for how to do stuff in Javascript
 const state2 = {
   temperature: 0,
   soccer: 0,
 };
 
-// Add a soccer ball
+// Add function to increaseTemp
 const increaseTemp = (event) => {
-  // const newSoccer = document.createElement('span');
-  // const soccerContainer = document.querySelector('#soccerContainer');
-  // newSoccer.textContent = '⚽';
-  // soccerContainer.appendChild(newSoccer);
-  // Soccer Count Behavior
   state2.temperature += 1;
   const temperatureContainer = document.querySelector('#temperature-number');
   temperatureContainer.textContent = `${state2.temperature}`;
@@ -29,13 +20,8 @@ const registerEventHandlers2 = (event) => {
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers2);
 
-// Add a soccer ball
+// Add function to decrease temp
 const decreaseTemp = (event) => {
-  // const newSoccer = document.createElement('span');
-  // const soccerContainer = document.querySelector('#soccerContainer');
-  // newSoccer.textContent = '⚽';
-  // soccerContainer.appendChild(newSoccer);
-  // Soccer Count Behavior
   state2.temperature -= 1;
   const temperatureContainer = document.querySelector('#temperature-number');
   temperatureContainer.textContent = `${state2.temperature}`;
