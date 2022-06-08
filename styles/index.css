@@ -1,6 +1,13 @@
-#white-box {
+.white-box {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:rgb(3, 2, 3);
     background-position: center;
     background-size: cover;
     text-align: center;
     background: rgb(19, 53, 79);
+    background-color: whitesmoke;
+}
+
+body {
+    background-color: rgb(63, 109, 214);
 }
