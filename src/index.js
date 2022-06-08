@@ -29,6 +29,26 @@ const registerEventHandlers2 = (event) => {
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers2);
 
+// Add a soccer ball
+const decreaseTemp = (event) => {
+  // const newSoccer = document.createElement('span');
+  // const soccerContainer = document.querySelector('#soccerContainer');
+  // newSoccer.textContent = '⚽';
+  // soccerContainer.appendChild(newSoccer);
+  // Soccer Count Behavior
+  state2.temperature -= 1;
+  const temperatureContainer = document.querySelector('#temperature-number');
+  temperatureContainer.textContent = `${state2.temperature}`;
+};
+
+// Register the event listener
+const registerEventHandlers3 = (event) => {
+  const upButton = document.querySelector('#down-button');
+  upButton.addEventListener('click', decreaseTemp);
+};
+
+document.addEventListener('DOMContentLoaded', registerEventHandlers3);
+
 // We leave this here as a reminder for how to do stuff in Javascript
 const state = {
   soccerCount: 0,
