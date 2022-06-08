@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(63, 109, 214);
+}
+
 .white-box {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color:rgb(3, 2, 3);
@@ -8,6 +12,3 @@
     background-color: whitesmoke;
 }
 
-body {
-    background-color: rgb(63, 109, 214);
-}
