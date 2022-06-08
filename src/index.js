@@ -4,7 +4,7 @@
 // Write functionality to decrease temp by 1 on click
 
 // We leave this here as a reminder for how to do stuff in Javascript
-const states = {
+const state2 = {
   temperature: 0,
   soccer: 0,
 };
@@ -16,9 +16,9 @@ const increaseTemp = (event) => {
   // newSoccer.textContent = '⚽';
   // soccerContainer.appendChild(newSoccer);
   // Soccer Count Behavior
-  state.temperature += 1;
+  state2.temperature += 1;
   const temperatureContainer = document.querySelector('#temperature-number');
-  temperatureContainer.textContent = `${state.temperature}`;
+  temperatureContainer.textContent = `${state2.temperature}`;
 };
 
 // Register the event listener
