@@ -5,6 +5,40 @@ const state = {
   soccer: 0,
 };
 
+//// pseudocode to call APIs ////
+// set up flask server with API keys
+// write function to set the temperature
+const getLiveTemp = (event) => {
+  //get the city name we want to search
+  const cityTitleName = document.getElementById('city-title-name');
+  // get the actual string of the city name
+  const city = cityTitleName.textContent;
+  //get the temperature we want to change
+  const tempNumber = document.getElementById('temperature-number');
+  //get a sample place to display lat and long
+  const latLongSpot = document.getElementById('latandlong');
+  // run the location API to get lat long, then run the weather API using lat long
+  axios
+    .get('http://127.0.0.1:5000/location', {
+      params: {
+        q: city,
+      },
+    })
+    .then((response) => {
+      const searchResult = response.data[0];
+      const latitude = searchResult.lat;
+      const longitude = searchResult.lon;
+      console.log(`lat: ${latitude} lon: ${longitude}`);
+      latLongSpot.textContent = `lat: ${latitude} lon: ${longitude}`;
+    })
+    .catch((error) => {
+      console.log('error!', error.response.data);
+    });
+};
+// inside the function get the lat/lon of the input city and get its weather (nest the api's)
+// reassign the temp variable to match the weather
+// register the function to make all this happen when button is clicked
+
 // function to change temp color
 const changeTempColor = (event) => {
   const tempNumber = document.getElementById('temperature-number');
@@ -68,6 +102,8 @@ const registerEventHandlers = (event) => {
   const upButton = document.querySelector('#up-button');
   const downButton = document.querySelector('#down-button');
   const cityInput = document.querySelector('#city-name');
+  const realCityButton = document.querySelector('#realtimeTemp');
+  realCityButton.addEventListener('click', getLiveTemp);
   cityInput.addEventListener('input', changeCityName);
   upButton.addEventListener('click', increaseTemp);
   downButton.addEventListener('click', decreaseTemp);
@@ -78,11 +114,3 @@ const registerEventHandlers = (event) => {
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
-
-
-//// pseudocode to call APIs ////
-// set up flask server with API keys
-// write function to set the temperature 
-// inside the function get the lat/lon of the input city and get its weather (nest the api's)
-// reassign the temp variable to match the weather
-// register the function to make all this happen when button is clicked 
