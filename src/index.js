@@ -29,10 +29,27 @@ const getLiveTemp = (event) => {
       const latitude = searchResult.lat;
       const longitude = searchResult.lon;
       console.log(`lat: ${latitude} lon: ${longitude}`);
-      latLongSpot.textContent = `lat: ${latitude} lon: ${longitude}`;
+      axios
+        .get('http://127.0.0.1:5000/weather', {
+          params: {
+            lat: latitude,
+            lon: longitude,
+          },
+        })
+        .then((response) => {
+          const tempKelvin = response.data.current.temp;
+          const tempFahr = Math.round((tempKelvin - 273.15) * 1.8 + 32);
+          console.log(`${tempKelvin}`);
+          console.log(`${tempFahr}`);
+          tempNumber.textContent = `${tempFahr}`;
+          state.temperature = tempFahr;
+        })
+        .catch((error) => {
+          console.log('error with weather API!', error.response.data);
+        });
     })
     .catch((error) => {
-      console.log('error!', error.response.data);
+      console.log('error with location API!', error.response.data);
     });
 };
 // inside the function get the lat/lon of the input city and get its weather (nest the api's)
@@ -104,6 +121,8 @@ const registerEventHandlers = (event) => {
   const cityInput = document.querySelector('#city-name');
   const realCityButton = document.querySelector('#realtimeTemp');
   realCityButton.addEventListener('click', getLiveTemp);
+  realCityButton.addEventListener('click', changeTempColor);
+  realCityButton.addEventListener('click', changeLandscape);
   cityInput.addEventListener('input', changeCityName);
   upButton.addEventListener('click', increaseTemp);
   downButton.addEventListener('click', decreaseTemp);
