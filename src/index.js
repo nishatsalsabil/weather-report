@@ -24,6 +24,23 @@ const changeTempColor = (event) => {
   // tempNumber.setAttribute(color, tempColor); can't get this to work, will use class instead
 };
 
+const changeLandscape = (event) => {
+  const landscape = document.getElementById('landscape');
+  let landscapeToDisplay = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
+  if (state.temperature >= 80) {
+    landscapeToDisplay = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
+  } else if (state.temperature >= 70) {
+    landscapeToDisplay = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
+  } else if (state.temperature >= 60) {
+    landscapeToDisplay = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
+  } else if (state.temperature <= 59) {
+    landscapeToDisplay = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
+  }
+  landscape.textContent = `${landscapeToDisplay}`;
+  // tempNumber.className = tempColor;
+  // tempNumber.setAttribute(color, tempColor); can't get this to work, will use class instead
+};
+
 //  function to decrease temp
 const decreaseTemp = (event) => {
   state.temperature -= 1;
@@ -46,9 +63,8 @@ const registerEventHandlers = (event) => {
   downButton.addEventListener('click', decreaseTemp);
   upButton.addEventListener('click', changeTempColor);
   downButton.addEventListener('click', changeTempColor);
+  upButton.addEventListener('click', changeLandscape);
+  downButton.addEventListener('click', changeLandscape);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
-
-
-
