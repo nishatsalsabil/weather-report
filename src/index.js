@@ -5,9 +5,7 @@ const state = {
   soccer: 0,
 };
 
-//// pseudocode to call APIs ////
-// set up flask server with API keys
-// write function to set the temperature
+// function to display the realtime temperature and update the color/landscape with the new temperature
 const getLiveTemp = (event) => {
   //get the city name we want to search
   const cityTitleName = document.getElementById('city-title-name');
@@ -15,9 +13,7 @@ const getLiveTemp = (event) => {
   const city = cityTitleName.textContent;
   //get the temperature we want to change
   const tempNumber = document.getElementById('temperature-number');
-  //get a sample place to display lat and long
-  const latLongSpot = document.getElementById('latandlong');
-  // run the location API to get lat long, then run the weather API using lat long
+  // run the location API to get lat long, then run the weather API using lat long, then reassign the temp
   axios
     .get('http://127.0.0.1:5000/location', {
       params: {
@@ -43,6 +39,9 @@ const getLiveTemp = (event) => {
           console.log(`${tempFahr}`);
           tempNumber.textContent = `${tempFahr}`;
           state.temperature = tempFahr;
+          //re-running the temp color and landscape function with our new temp
+          changeTempColor();
+          changeLandscape();
         })
         .catch((error) => {
           console.log('error with weather API!', error.response.data);
@@ -52,9 +51,6 @@ const getLiveTemp = (event) => {
       console.log('error with location API!', error.response.data);
     });
 };
-// inside the function get the lat/lon of the input city and get its weather (nest the api's)
-// reassign the temp variable to match the weather
-// register the function to make all this happen when button is clicked
 
 // function to change temp color
 const changeTempColor = (event) => {
@@ -75,6 +71,7 @@ const changeTempColor = (event) => {
   // tempNumber.setAttribute(color, tempColor); can't get this to work, will use class instead
 };
 
+// function to change landscape emojis
 const changeLandscape = (event) => {
   const landscape = document.getElementById('landscape');
   let landscapeToDisplay = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
@@ -91,9 +88,7 @@ const changeLandscape = (event) => {
 };
 
 // function to change city name
-
 const changeCityName = (event) => {
-  // let theText = myTextInput.value;
   const cityName = document.getElementById('city-name');
   let cityInput = cityName.value;
   const cityTitleName = document.getElementById('city-title-name');
@@ -121,8 +116,6 @@ const registerEventHandlers = (event) => {
   const cityInput = document.querySelector('#city-name');
   const realCityButton = document.querySelector('#realtimeTemp');
   realCityButton.addEventListener('click', getLiveTemp);
-  realCityButton.addEventListener('click', changeTempColor);
-  realCityButton.addEventListener('click', changeLandscape);
   cityInput.addEventListener('input', changeCityName);
   upButton.addEventListener('click', increaseTemp);
   downButton.addEventListener('click', decreaseTemp);
