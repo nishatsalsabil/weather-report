@@ -78,3 +78,11 @@ const registerEventHandlers = (event) => {
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
+
+
+//// pseudocode to call APIs ////
+// set up flask server with API keys
+// write function to set the temperature 
+// inside the function get the lat/lon of the input city and get its weather (nest the api's)
+// reassign the temp variable to match the weather
+// register the function to make all this happen when button is clicked 
