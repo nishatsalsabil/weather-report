@@ -37,8 +37,16 @@ const changeLandscape = (event) => {
     landscapeToDisplay = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
   }
   landscape.textContent = `${landscapeToDisplay}`;
-  // tempNumber.className = tempColor;
-  // tempNumber.setAttribute(color, tempColor); can't get this to work, will use class instead
+};
+
+// function to change city name
+
+const changeCityName = (event) => {
+  // let theText = myTextInput.value;
+  const cityName = document.getElementById('city-name');
+  let cityInput = cityName.value;
+  const cityTitleName = document.getElementById('city-title-name');
+  cityTitleName.textContent = `${cityInput}`;
 };
 
 //  function to decrease temp
@@ -59,6 +67,8 @@ const increaseTemp = (event) => {
 const registerEventHandlers = (event) => {
   const upButton = document.querySelector('#up-button');
   const downButton = document.querySelector('#down-button');
+  const cityInput = document.querySelector('#city-name');
+  cityInput.addEventListener('input', changeCityName);
   upButton.addEventListener('click', increaseTemp);
   downButton.addEventListener('click', decreaseTemp);
   upButton.addEventListener('click', changeTempColor);
