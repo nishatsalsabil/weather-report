@@ -5,6 +5,31 @@ const state2 = {
   soccer: 0,
 };
 
+const changeTempColor = (event) => {
+  const tempNumber = document.getElementById('temperature-number');
+  let tempColor = 'black';
+  if (state2.temperature >= 80) {
+    tempColor = 'red';
+  } else if (state2.temperature >= 70) {
+    tempColor = 'orange';
+  } else if (state2.temperature >= 60) {
+    tempColor = 'yellow';
+  } else if (state2.temperature >= 50) {
+    tempColor = 'green';
+  } else if (state2.temperature <= 49) {
+    tempColor = 'teal';
+  }
+  tempNumber.className = tempColor;
+};
+const registerEventHandlers4 = (event) => {
+  const upButton = document.querySelector('#up-button');
+  upButton.addEventListener('click', changeTempColor);
+};
+const registerEventHandlers5 = (event) => {
+  const downButton = document.querySelector('#down-button');
+  downButton.addEventListener('click', changeTempColor);
+};
+
 // Add function to increaseTemp
 const increaseTemp = (event) => {
   state2.temperature += 1;
