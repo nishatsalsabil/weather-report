@@ -9,9 +9,29 @@ body {
     background-size: cover;
     text-align: center;
     background: rgb(19, 53, 79);
-    background-color: whitesmoke;
+    background-color: rgb(211, 208, 208);
 }
 
 .teal {
     color: teal;
+}
+
+.black {
+    color: black;
+}
+
+.orange {
+    color: orange;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
 }
