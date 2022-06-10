@@ -87,12 +87,36 @@ const changeLandscape = (event) => {
   landscape.textContent = `${landscapeToDisplay}`;
 };
 
+// function to change sky emojis
+const updateSky = (event) => {
+  const skyButton = document.getElementById('sky-button').value;
+  const defaultSky = document.getElementById('sky');
+  let sky = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+  if (skyButton === 'Sunny') {
+    sky = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+  } else if (skyButton === 'Cloudy') {
+    sky = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+  } else if (skyButton === 'Rainy') {
+    sky = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+  } else if (skyButton === 'Snowy') {
+    sky = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+  }
+  defaultSky.textContent = sky;
+};
+
 // function to change city name
 const changeCityName = (event) => {
   const cityName = document.getElementById('city-name');
   let cityInput = cityName.value;
   const cityTitleName = document.getElementById('city-title-name');
   cityTitleName.textContent = `${cityInput}`;
+};
+
+// function to reset city
+const resetCityName = (event) => {
+  const cityNameInput = document.getElementById('city-name');
+  cityNameInput.value = '';
+  updateCityName();
 };
 
 //  function to decrease temp
@@ -112,17 +136,30 @@ const increaseTemp = (event) => {
 // Register the event listener
 const registerEventHandlers = (event) => {
   const upButton = document.querySelector('#up-button');
+  upButton.addEventListener('click', increaseTemp);
+  upButton.addEventListener('click', changeTempColor);
+  upButton.addEventListener('click', changeLandscape);
+
+
   const downButton = document.querySelector('#down-button');
+  downButton.addEventListener('click', decreaseTemp);
+  downButton.addEventListener('click', changeTempColor);
+  downButton.addEventListener('click', changeLandscape);
+
+
   const cityInput = document.querySelector('#city-name');
+  cityInput.addEventListener('input', changeCityName);
+
+  const cityNameResetBtn = document.getElementById("reset-button");
+  cityNameResetBtn.addEventListener("click", resetCityName);
+
+
   const realCityButton = document.querySelector('#realtimeTemp');
   realCityButton.addEventListener('click', getLiveTemp);
-  cityInput.addEventListener('input', changeCityName);
-  upButton.addEventListener('click', increaseTemp);
-  downButton.addEventListener('click', decreaseTemp);
-  upButton.addEventListener('click', changeTempColor);
-  downButton.addEventListener('click', changeTempColor);
-  upButton.addEventListener('click', changeLandscape);
-  downButton.addEventListener('click', changeLandscape);
+
+
+  const skyButton = document.getElementById('sky-button');
+  skyButton.addEventListener('change', updateSky);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
