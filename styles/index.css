@@ -6,11 +6,10 @@ main {
     text-align: center;
 }
 
-/* main h3 {
+.top-city-title {
+    display: inline-block;
     white-space: nowrap;
-    display: flex;
-    justify-content: space-between;
-} */
+}
 
 .white-box {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -20,6 +19,8 @@ main {
     text-align: center;
     background: rgb(19, 53, 79);
     background-color: rgb(211, 208, 208);
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 .teal {

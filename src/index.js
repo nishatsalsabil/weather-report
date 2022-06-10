@@ -2,7 +2,6 @@
 
 const state = {
   temperature: 40,
-  soccer: 0,
 };
 
 // function to display the realtime temperature and update the color/landscape with the new temperature
@@ -24,7 +23,6 @@ const getLiveTemp = (event) => {
       const searchResult = response.data[0];
       const latitude = searchResult.lat;
       const longitude = searchResult.lon;
-      console.log(`lat: ${latitude} lon: ${longitude}`);
       axios
         .get('http://127.0.0.1:5000/weather', {
           params: {
@@ -35,9 +33,7 @@ const getLiveTemp = (event) => {
         .then((response) => {
           const tempKelvin = response.data.current.temp;
           const tempFahr = Math.round((tempKelvin - 273.15) * 1.8 + 32);
-          console.log(`${tempKelvin}`);
-          console.log(`${tempFahr}`);
-          tempNumber.textContent = `${tempFahr}`;
+          tempNumber.textContent = `${tempFahr}°F`;
           state.temperature = tempFahr;
           //re-running the temp color and landscape function with our new temp
           changeTempColor();
@@ -116,21 +112,21 @@ const changeCityName = (event) => {
 const resetCityName = (event) => {
   const cityNameInput = document.getElementById('city-name');
   cityNameInput.value = '';
-  updateCityName();
+  changeCityName();
 };
 
 //  function to decrease temp
 const decreaseTemp = (event) => {
   state.temperature -= 1;
   const temperatureContainer = document.querySelector('#temperature-number');
-  temperatureContainer.textContent = `${state.temperature}`;
+  temperatureContainer.textContent = `${state.temperature}°F`;
 };
 
 //  function to increase temp
 const increaseTemp = (event) => {
   state.temperature += 1;
   const temperatureContainer = document.querySelector('#temperature-number');
-  temperatureContainer.textContent = `${state.temperature}`;
+  temperatureContainer.textContent = `${state.temperature}°F`;
 };
 
 // Register the event listener
