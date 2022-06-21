@@ -136,23 +136,19 @@ const registerEventHandlers = (event) => {
   upButton.addEventListener('click', changeTempColor);
   upButton.addEventListener('click', changeLandscape);
 
-
   const downButton = document.querySelector('#down-button');
   downButton.addEventListener('click', decreaseTemp);
   downButton.addEventListener('click', changeTempColor);
   downButton.addEventListener('click', changeLandscape);
 
-
   const cityInput = document.querySelector('#city-name');
   cityInput.addEventListener('input', changeCityName);
 
-  const cityNameResetBtn = document.getElementById("reset-button");
-  cityNameResetBtn.addEventListener("click", resetCityName);
-
+  const cityNameResetBtn = document.getElementById('reset-button');
+  cityNameResetBtn.addEventListener('click', resetCityName);
 
   const realCityButton = document.querySelector('#realtimeTemp');
   realCityButton.addEventListener('click', getLiveTemp);
-
 
   const skyButton = document.getElementById('sky-button');
   skyButton.addEventListener('change', updateSky);

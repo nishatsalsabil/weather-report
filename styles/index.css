@@ -1,9 +1,17 @@
 body {
-    background-color: rgb(91, 133, 229);
+    /* background-color: rgb(91, 133, 229); */
+    background-image: url('../assets/weather.jpg');
 }
 
 main {
+    font-family: cursive;
+    font-size: larger;
+    font-weight: bolder;
     text-align: center;
+}
+
+main h1 {
+    margin-bottom: 0px;
 }
 
 .top-city-title {
@@ -12,19 +20,57 @@ main {
 }
 
 .white-box {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
     color:rgb(3, 2, 3);
     background-position: center;
     background-size: cover;
     text-align: center;
     background: rgb(19, 53, 79);
-    background-color: rgb(211, 208, 208);
-    margin-left: 100px;
-    margin-right: 100px;
+    background-color: rgb(213, 140, 233);
+    margin-left: 600px;
+    margin-right: 600px;
+    margin-top: 50px;
+    padding-bottom: 5px;
+    border-radius: 50px;
+    opacity: 0.8;
+}
+
+#up-button {
+    background-color: aqua;
+    border-radius: 100px;
+}
+
+#down-button {
+    background-color: aqua;
+    margin-bottom: 10px;
+    border-radius: 100px;
+}
+
+#realtimeTemp {
+    padding: 10px;
+    border-radius: 50px;
+    background-color: whitesmoke;
+    border-style: dotted;
+}
+
+#sky-button {
+    padding: 10px;
+    border-radius: 50px;
+    background-color: whitesmoke;
+    border-style: dotted;
+}
+
+#reset-button {
+    padding: 10px;
+    border-radius: 50px;
+    background-color: whitesmoke;
+    border-style: dotted;
 }
 
 .teal {
     color: teal;
+    font-size: 20px;
 }
 
 .black {
@@ -50,11 +96,13 @@ main {
 
 /* ----- Footer ----- */
 .footer {
+    position: absolute;
+    bottom: 5;
     width: 100%;
+    height: 1rem; 
     text-align: center;
-    padding: 30px 0;
     font-size: 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: cursive;
 }
 
 
